@@ -1,6 +1,6 @@
 {
   "name": "taco-bell-starter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "taco-bell starter app",
   "main": "index.js",
   "scripts": {
