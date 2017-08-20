@@ -1,0 +1,39 @@
+{
+  "name": "taco-bell-starter",
+  "version": "1.0.0",
+  "description": "taco-bell starter app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bglowney/taco-bell-starter.git"
+  },
+  "keywords": [
+    "taco-bell"
+  ],
+  "author": "bglowney",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.18.1",
+    "taco-bell": "^1.2.14",
+    "taco-bell-server": "^1.0.0",
+    "typescript": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "chromedriver": "^2.31.0",
+    "co": "^4.6.0",
+    "fs": "0.0.1-security",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-execute": "^0.2.2",
+    "grunt-mocha-test": "^0.13.2",
+    "grunt-ts": "^6.0.0-beta.16",
+    "mocha": "^3.5.0",
+    "selenium-webdriver": "^3.5.0"
+  }
+}
