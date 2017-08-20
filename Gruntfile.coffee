@@ -1,3 +1,12 @@
+# Properties
+properties =
+  build:
+    langLevel: 'es6'
+    sourceMap: false
+  tst:
+    browserLocation: '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+
+# Grunt task configuration
 module.exports = (grunt) ->
   config =
     pkg: grunt.file.readJSON 'package.json'
@@ -7,22 +16,22 @@ module.exports = (grunt) ->
         src: ['src/client/**.ts']
         options:
           module: 'commonjs'
-          sourceMap: false
-          target: 'es6'
+          sourceMap: properties.build.sourceMap
+          target: properties.build.langLevel
       server:
         src: ['src/*.ts','src/server/**.ts']
         options:
           module: 'commonjs'
           moduleResolution: 'Node'
-          target: 'es6'
-          sourceMap: false
+          target: properties.build.langLevel
+          sourceMap: properties.build.sourceMap
       tst:
         src: ['tst/**.ts']
         options:
           module: 'commonjs'
           moduleResolution: 'Node'
-          target: 'es6'
-          sourceMap: false
+          target: properties.build.langLevel
+          sourceMap: properties.build.sourceMap
     browserify:
       dist:
         files:
@@ -46,10 +55,14 @@ module.exports = (grunt) ->
     mochaTest:
       'end-to-end':
         src: 'tst/end-to-end.js'
+    env:
+      'end-to-end':
+        'tst.browserLocation': properties.tst.browserLocation
 
   grunt.initConfig config
 
   grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-env'
   grunt.loadNpmTasks 'grunt-ts'
   grunt.loadNpmTasks 'grunt-browserify'
   grunt.loadNpmTasks 'grunt-execute'
@@ -58,4 +71,4 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'default', ['ts:server', 'ts:client', 'ts:tst', 'browserify:dist', 'copy']
   grunt.registerTask 'serve', ['execute:server']
-  grunt.registerTask 'end-to-end', ['mochaTest:end-to-end']
+  grunt.registerTask 'end-to-end', ['env:end-to-end','mochaTest:end-to-end']

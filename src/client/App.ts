@@ -29,6 +29,7 @@ export class App {
                     .withAttribute("id","response-text")
                     .withText(model.helloResponse.message),
                 new tb.Collection('ul')
+                    .withAttribute('id','visitor-list')
                     .children(model.visitors, (response: tb.ModelElement<HelloResponse>): Visitor => {
                         return new Visitor(response.get());
                     })
